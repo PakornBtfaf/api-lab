@@ -1,5 +1,16 @@
 # api-lab
 
+API testing of QuickPizza with pytest and requests.
+
+## Install and run
+
+```
+python -m venv .venv
+.venv\Scripts\activate
+pip install -r requirements.txt
+pytest -v
+```
+
 ## Input domain model: POST /api/ratings
 
 | Characteristic | Block | Values in the tests | Covered by |
