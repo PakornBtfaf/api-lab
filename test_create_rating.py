@@ -19,3 +19,42 @@ def test_stars_out_of_range(api, auth, pizza_id, stars):
     res = api.post("/api/ratings", json=new, headers=auth)
     assert res.status_code == 400
     assert res.json() == {"error": STARS_ERROR}
+
+# C2: stars as a decimal number is refused.
+def test_stars_decimal_is_refused(api, auth, pizza_id):
+    new = {"pizza_id": pizza_id, "stars": 3.5}
+    res = api.post("/api/ratings", json=new, headers=auth)
+    assert res.status_code == ...   # จากผล probe
+    assert res.json() == ...        # จากผล probe
+
+
+# C2: stars as text is refused.
+def test_stars_text_is_refused(api, auth, pizza_id):
+    new = {"pizza_id": pizza_id, "stars": "3"}
+    ...
+
+
+# C2: a request without the stars field is refused.
+def test_stars_missing_is_refused(api, auth, pizza_id):
+    new = {"pizza_id": pizza_id}
+    ...
+
+
+# C3: a pizza that does not exist is refused.
+def test_unknown_pizza_is_refused(api, auth):
+    new = {"pizza_id": 999999999, "stars": 3}
+    ...
+
+
+# C4: a request without a token is refused.
+def test_no_token_is_refused(api, pizza_id):
+    new = {"pizza_id": pizza_id, "stars": 3}
+    res = api.post("/api/ratings", json=new)   # ไม่ส่ง headers
+    ...
+
+
+# C4: a token of the wrong length is refused.
+def test_short_token_is_refused(api, pizza_id):
+    new = {"pizza_id": pizza_id, "stars": 3}
+    res = api.post("/api/ratings", json=new, headers={"Authorization": "token abc"})
+    ...
