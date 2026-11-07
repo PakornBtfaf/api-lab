@@ -17,15 +17,7 @@
 - Severity: Medium. The server fails on valid input and the app gets no message to show the customer.
 
 ## Part A
-Characteristic	Block	Covered by
-C1	below 1 / above 5	test_stars_out_of_range[0] / [6]
-C1	1 to 5 (base)	test_base_choice_is_saved
-C2	decimal	test_stars_decimal_is_refused
-C2	text	test_stars_text_is_refused
-C2	missing	test_stars_missing_is_refused
-C3	does not exist	test_unknown_pizza_is_refused
-C4	none	test_no_token_is_refused
-C4	wrong length	test_short_token_is_refused
+
 - Step A4, status codes when the other user reads, changes and deletes:
 
 ## Part B
